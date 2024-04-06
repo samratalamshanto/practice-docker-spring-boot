@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: test
+    ports:
+      - 5432:5432
+    volumes:
+#      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - E:\docker_volume\database:/var/lib/postgresql/data
+    networks:
+      - custom-network
+
+  application:
+    container_name: application
+    build: .
+    restart: always
+    ports:
+      - 9090:9090
+    environment:
+      db-url: jdbc:postgresql://postgres:5432/test
+      db-username: admin
+      db-password: 1234
+    networks:
+      - custom-network
+
+networks:
+  custom-network:
+    driver: bridge
+
