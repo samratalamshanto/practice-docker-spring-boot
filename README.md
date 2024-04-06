@@ -4,3 +4,5 @@
 2. Build an image for the application.
 3. Build a Docker-compose file and run the application in the container using the Docker network.
 4. Use docker volume to persist the data in the host location using data mount.
+
+![image](https://github.com/samratalamshanto/practice-docker-spring-boot/assets/38380356/f480b00d-ef42-4838-84ee-6208694446ea)
